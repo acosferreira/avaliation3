@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @list.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @list.description %>
+</p>
+
+<table>
+
+    <tr>
+      <td colspam="4">
+        <h3>Do not Finalized</h3>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Description</th>
+      <th>Finalized</th>
+      <th>List</th>
+    </tr>
+
+    <% @tasks_finalized_false.each do |task| %>
+      <tr>
+        <td><%= task.description %></td>
+        <td><%= task.finalized %></td>
+        <td><%= task.list_id %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+
+    <tr>
+      <td colspam="4">
+        <h3>Finalized</h3>
+      </td>
+    </tr>
+
+    <tr>
+      <th>Description</th>
+      <th>Finalized</th>
+      <th>List</th>
+    </tr>
+    
+    <% @tasks_finalized_true.each do |task| %>
+
+      <tr>
+        <td><%= task.description %></td>
+        <td><%= task.finalized %></td>
+        <td><%= task.list_id %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+</table>
+
+</br>
+</br>
+<%= link_to 'New Task', new_task_path %>
+</br>
+</br>
+
+<%= @task_list_id %>
+</br>
+</br>
+
+<%= link_to 'Edit', edit_list_path(@list) %> |
+<%= link_to 'Back', lists_path %>
